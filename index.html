@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Lầu 9 - Star Group</title>
+    <meta name="description" content="Game 3D chơi thử: một ngày làm việc vui nhộn ở văn phòng lầu 9 Star Group." />
+    <meta property="og:title" content="Lầu 9 · Star Group" />
+    <meta property="og:description" content="Một ngày làm việc vui nhộn ở văn phòng lầu 9: chốt deal đánh chiêng, cà khịa đồng nghiệp, ngủ trưa, mưa giông tan làm." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700&display=swap" rel="stylesheet" />
+    <script type="module" crossorigin src="./assets/index-BHy3MFau.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-2TS7FR9A.css">
+  </head>
+  <body>
+    <div id="app"></div>
+
+    <div id="hud">
+      <div id="title">
+        <div class="t1">Lầu 9 · Star Group</div>
+        <div class="t2">Bản chơi thử · Một ngày ở lầu 9</div>
+      </div>
+      <div id="topbar">
+        <div id="clock">--:--</div>
+        <button id="btn-klc" type="button">♪ Phát nhạc KLC</button>
+        <button id="btn-play" type="button">▶ Chơi gì?</button>
+        <button id="btn-badges" type="button">★ Huy hiệu</button>
+      </div>
+      <canvas id="minimap" width="240" height="168"></canvas>
+      <div id="quest">
+        <div class="q1">Nhiệm vụ: In hợp đồng</div>
+        <div id="quest-step"></div>
+        <div id="quest-timer"></div>
+      </div>
+      <div id="prod"><span>Năng suất</span><div class="bar"><div id="prod-fill"></div></div></div>
+      <div id="toast"></div>
+      <div id="cards">
+        <div class="c-head"><span>Đánh bài góc phòng · So lá lớn</span><span id="cards-score"></span></div>
+        <div class="c-table">
+          <div class="c-side"><span>Hội góc phòng</span><div id="cards-opp"></div></div>
+          <div class="c-vs">VS</div>
+          <div class="c-side"><span>Nhung</span><div id="cards-me"></div></div>
+        </div>
+        <div id="cards-pick"></div>
+        <div id="cards-msg"></div>
+      </div>
+      <div id="play">
+        <div class="b-head"><span>Chơi gì nè?</span><span class="p-hint">bấm vào trò hoặc phím số</span><button id="play-close" type="button" aria-label="Đóng">✕</button></div>
+        <div id="play-list"></div>
+      </div>
+      <div id="fade"></div>
+      <div id="dayend">
+        <div class="d-title" id="dayend-title">Tan làm!</div>
+        <div class="d-sub">Ngoài trời mưa to quá, mai gặp lại nha!</div>
+        <div id="dayend-list"></div>
+        <button id="dayend-next" type="button">Sang ngày mới ▶</button>
+      </div>
+      <div id="badges">
+        <div class="b-head"><span>Huy hiệu</span><span id="badges-sum"></span><button id="badges-close" type="button" aria-label="Đóng">✕</button></div>
+        <div id="badges-list"></div>
+      </div>
+      <div id="argue">
+        <div class="a-head"><span id="argue-title"></span><span id="argue-round"></span></div>
+        <div class="a-bar"><span>Làm lành</span><div class="track"><div id="argue-knob"></div></div><span>Nhung thắng</span></div>
+        <div id="argue-choices"></div>
+      </div>
+      <div id="prompt"></div>
+      <div id="hint">W A S D: đi · Shift: chạy · Space: nhảy · E: ngồi / đứng ghế · Kéo chuột: xoay · Lăn chuột: gần / xa · M: bản đồ · L: nhãn · N: nhạc · K: nhạc KLC · Q: cà khịa · F: chơi gì? · B: huy hiệu</div>
+    </div>
+
+    <div id="touch">
+      <div id="joy"><div id="knob"></div></div>
+      <button id="btn-act" type="button">Ngồi</button>
+      <button id="btn-jump" type="button">Nhảy</button>
+      <button id="btn-music" type="button">Nhạc</button>
+      <button id="btn-argue" type="button">Cà khịa</button>
+      <button id="btn-pha" type="button">Chơi gì?</button>
+    </div>
+
+    <div id="welcome">
+      <div class="w-card">
+        <div class="w-title">Lầu 9 · Star Group</div>
+        <div class="w-sub">Một ngày làm việc vui nhộn ở văn phòng lầu 9. Bạn vào vai <b>Nhung</b>, từ 8 giờ sáng tới lúc tan làm (khoảng 10 phút).</div>
+        <ul class="w-keys only-desktop">
+          <li><b>W A S D</b> đi · <b>Shift</b> chạy · <b>Space</b> nhảy</li>
+          <li><b>Kéo chuột</b> xoay · <b>Lăn chuột</b> gần xa</li>
+          <li><b>F</b> chọn trò chơi · <b>B</b> xem huy hiệu</li>
+          <li><b>E</b> nói chuyện, ngồi ghế · <b>Q</b> cà khịa đồng nghiệp</li>
+        </ul>
+        <ul class="w-keys only-touch">
+          <li>Kéo <b>vòng tròn góc trái</b> để đi, kéo màn hình để xoay</li>
+          <li>Nút cam <b>Chơi gì?</b> để chọn trò chơi</li>
+          <li>Nút <b>Nói</b>, <b>Ngồi</b>, <b>Cà khịa</b> hiện khi đứng gần người, gần ghế</li>
+        </ul>
+        <div class="w-note">Bật loa để nghe nhạc. Đây là bản chơi thử, nhân vật vẽ vui theo đồng nghiệp thật.</div>
+        <button id="welcome-go" type="button">Vào làm thôi!</button>
+      </div>
+    </div>
+
+    <div id="loading">Đang dựng lầu 9...</div>
+
+  </body>
+</html>
