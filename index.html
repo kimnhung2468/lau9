@@ -9,12 +9,16 @@
     <meta property="og:description" content="Một ngày làm việc vui nhộn ở văn phòng lầu 9: chốt deal đánh chiêng, cà khịa đồng nghiệp, ngủ trưa, mưa giông tan làm." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700&display=swap" rel="stylesheet" />
-    <script type="module" crossorigin src="./assets/index-CuMoFLQM.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-MVWvP_cL.css">
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700&family=Pangolin&family=Patrick+Hand&family=Dancing+Script:wght@600&display=swap" rel="stylesheet" />
+    <script type="module" crossorigin src="./assets/index-CawfWqp_.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-2Mglz6zh.css">
   </head>
   <body>
     <div id="app"></div>
+    <div id="photo-tint"></div>
+    <div id="intro-card"><div id="intro-text"></div></div>
+    <div id="intro-yawn">Oáp~ Thứ Hai rồi...</div>
+    <button id="intro-skip" type="button">Bỏ qua ⏭</button>
 
     <div id="hud">
       <div id="title">
@@ -26,15 +30,18 @@
         <button id="btn-klc" type="button">♪ Phát nhạc KLC</button>
         <button id="btn-play" type="button">▶ Chơi gì?</button>
         <button id="btn-badges" type="button">★ Huy hiệu</button>
+        <button id="btn-photo" type="button" title="Chụp ảnh (phím P)">📷<span> Chụp ảnh</span></button>
       </div>
       <canvas id="minimap" width="240" height="168"></canvas>
       <div id="quest">
-        <div class="q1">Nhiệm vụ: In hợp đồng</div>
+        <div class="q1" id="quest-title">Nhiệm vụ: In hợp đồng</div>
         <div id="quest-step"></div>
         <div id="quest-timer"></div>
       </div>
       <div id="prod"><span>Năng suất</span><div class="bar"><div id="prod-fill"></div></div></div>
       <div id="toast"></div>
+      <div id="tut"><div id="tut-step"></div><div id="tut-text"></div><button id="tut-skip" type="button">Bỏ qua hướng dẫn</button></div>
+      <div id="godcard"><span>THẦN BÀI</span><b>LẦU 9</b></div>
       <div id="cards">
         <div class="c-head"><span>Đánh bài góc phòng · So lá lớn</span><span id="cards-score"></span></div>
         <div class="c-table">
@@ -44,10 +51,12 @@
         </div>
         <div id="cards-pick"></div>
         <div id="cards-msg"></div>
+        <div id="cards-cheat"></div>
       </div>
       <div id="play">
         <div class="b-head"><span>Chơi gì nè?</span><span class="p-hint">bấm vào trò hoặc phím số</span><button id="play-close" type="button" aria-label="Đóng">✕</button></div>
         <div id="play-list"></div>
+        <button id="play-tut" type="button">↺ Xem lại hướng dẫn chơi</button>
       </div>
       <div id="fade"></div>
       <div id="dayend">
@@ -64,6 +73,19 @@
         <div class="a-head"><span id="argue-title"></span><span id="argue-round"></span></div>
         <div class="a-bar"><span>Làm lành</span><div class="track"><div id="argue-knob"></div></div><span>Nhung thắng</span></div>
         <div id="argue-choices"></div>
+      </div>
+      <div id="photo">
+        <div class="ph-head"><span>📷 Chụp ảnh</span><span class="ph-tip">Kéo để xoay camera, lăn chuột để gần xa</span></div>
+        <div class="ph-row"><b>Dáng</b><div id="photo-poses" class="ph-chips"></div></div>
+        <div class="ph-row"><b>Lọc màu</b><div id="photo-filters" class="ph-chips"></div></div>
+        <div class="ph-row"><b>Dòng chữ</b><div id="photo-caps" class="ph-chips"></div></div>
+        <div class="ph-row"><b></b><input id="photo-caption" type="text" maxlength="40" placeholder="Hoặc tự gõ chữ ở đây..." /></div>
+        <div class="ph-actions"><button id="photo-save" type="button">Lưu ảnh</button><button id="photo-exit" type="button">Thoát</button></div>
+      </div>
+      <div id="chore">
+        <div class="s-head" id="chore-title"></div>
+        <div class="s-text" id="chore-text"></div>
+        <div id="chore-choices"></div>
       </div>
       <div id="story">
         <div class="s-head" id="story-title"></div>
